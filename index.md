@@ -1,6 +1,6 @@
 ---
 title: "Theme documentation"
-description: "Documentation for the WiThemes WordPress themes — Fox, Dine, Simple & Elegant, Blank and Stoat."
+description: "Documentation for the Fox, Dine, Simple & Elegant, Blank and Stoat WordPress themes."
 ---
 
-Documentation for the WiThemes WordPress themes. Pick a theme to get started.
+Documentation for the Fox, Dine, Simple & Elegant, Blank and Stoat WordPress themes. Pick a theme to get started.
