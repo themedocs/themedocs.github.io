@@ -1,6 +1,6 @@
 ---
 title: "Theme documentation"
-description: "An invite-only documentation service."
+description: "A platform for hosting WordPress theme docs."
 ---
 
-An invite-only documentation service.
+This is a platform for hosting WordPress theme docs.

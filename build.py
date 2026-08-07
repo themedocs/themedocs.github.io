@@ -9,7 +9,6 @@ site is only the front door, so it is a single page plus a 404.
 """
 
 import html
-import re
 import shutil
 import tomllib
 from pathlib import Path
@@ -18,7 +17,6 @@ import markdown
 
 ROOT = Path(__file__).resolve().parent
 BUILD = ROOT / "docs"
-STYLE = ROOT / "style.css"
 BASE = "https://themedocs.github.io"
 
 
@@ -41,7 +39,7 @@ def split_front_matter(text):
     return meta, text[end + 4 :].lstrip("\n")
 
 
-def shell(*, title, description, url, body, css):
+def shell(*, title, description, url, body):
     head = [
         "<!doctype html><html lang=en><head><meta charset=utf-8>",
         '<meta name=viewport content="width=device-width,initial-scale=1">',
@@ -55,23 +53,11 @@ def shell(*, title, description, url, body, css):
         f'<meta property="og:url" content="{BASE}{url}">',
         '<meta property="og:type" content="website">',
         '<meta name="twitter:card" content="summary">',
-        f"<style>:root{{--a:#c2410c}}{css}</style>",
     ]
-    return (
-        "".join(head)
-        + "</head><body>"
-        + '<a class=skip href="#main">Skip to content</a>'
-        + '<div class="wrap wide"><main id=main>'
-        + body
-        + "</main></div>"
-        + "</body></html>"
-    )
+    return "".join(head) + "</head><body>" + body + "</body></html>"
 
 
 def build():
-    css = re.sub(r"\s+", " ", re.sub(r"/\*.*?\*/", "", STYLE.read_text(), flags=re.S)).strip()
-    css = re.sub(r"\s*([{}:;,>])\s*", r"\1", css).replace(";}", "}")
-
     themes = load_toml(ROOT / "themes.toml")["theme"]
     meta, raw = split_front_matter((ROOT / "index.md").read_text(encoding="utf-8"))
     intro = markdown.markdown(raw, extensions=["extra", "smarty"])
@@ -85,9 +71,7 @@ def build():
             title=meta.get("title") or "Theme documentation",
             description=meta.get("description", ""),
             url="/",
-            body=f'<h1>{html.escape(meta.get("title") or "Theme documentation")}</h1>'
-                 f"{intro}",
-            css=css,
+            body=intro,
         ),
         encoding="utf-8",
     )
@@ -96,9 +80,8 @@ def build():
             title="Page not found",
             description="",
             url="/",
-            body="<h1>Page not found</h1><p>That page has moved or never existed. "
+            body='<p>That page has moved or never existed. '
                  '<a href="/">Start from the documentation home</a>.</p>',
-            css=css,
         ),
         encoding="utf-8",
     )
