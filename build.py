@@ -76,12 +76,6 @@ def build():
     meta, raw = split_front_matter((ROOT / "index.md").read_text(encoding="utf-8"))
     intro = markdown.markdown(raw, extensions=["extra", "smarty"])
 
-    picks = "".join(
-        f'<a class=pick href="/{t["slug"]}/"><b>{html.escape(t["name"])}</b>'
-        f'<span>{html.escape(t.get("tagline", ""))}</span></a>'
-        for t in themes
-    )
-
     BUILD.mkdir(parents=True, exist_ok=True)
     for item in BUILD.iterdir():
         shutil.rmtree(item) if item.is_dir() else item.unlink()
@@ -92,7 +86,7 @@ def build():
             description=meta.get("description", ""),
             url="/",
             body=f'<h1>{html.escape(meta.get("title") or "Theme documentation")}</h1>'
-                 f"{intro}<div class=picks>{picks}</div>",
+                 f"{intro}",
             css=css,
         ),
         encoding="utf-8",
@@ -115,7 +109,7 @@ def build():
         "User-agent: *\nAllow: /\n\n"
         + "".join(f"Sitemap: {BASE}/{t['slug']}/sitemap.xml\n" for t in themes)
     )
-    print(f"  1 page + 404 · {len(themes)} themes linked")
+    print(f"  1 page + 404 · {len(themes)} sitemaps listed")
 
 
 if __name__ == "__main__":

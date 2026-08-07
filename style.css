@@ -72,11 +72,6 @@ kbd{border:1px solid #ccc;border-bottom-width:2px;border-radius:3px;padding:.05e
 .card h2{font-size:.82em;text-transform:uppercase;letter-spacing:.06em;color:#999;border:0;margin:0 0 .4em;padding:0}
 .card a{display:block;font-size:.95em;padding:.1em 0;text-decoration:none}
 .card .more{color:#999;font-size:.88em}
-.picks{display:grid;gap:1em;margin-top:2em;max-width:34em}
-.pick{display:block;border:1px solid #e3e3e3;padding:1em 1.2em;text-decoration:none}
-.pick:hover{border-color:var(--a);text-decoration:none}
-.pick b{display:block;color:#000;font-size:1.1em}
-.pick span{color:#666;font-size:.92em}
 
 .foot{border-top:1px solid #eee;padding:1.4em;text-align:center;font-size:.85em;color:#999}
 
