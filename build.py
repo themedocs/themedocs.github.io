@@ -18,6 +18,9 @@ import markdown
 ROOT = Path(__file__).resolve().parent
 BUILD = ROOT / "docs"
 BASE = "https://themedocs.github.io"
+# Google Analytics 4 — one property covers this page and every theme repo below
+# it, so the same id is set in each theme repo's site.toml.
+GA_ID = "G-YC7YN7JPV8"
 
 
 def load_toml(path):
@@ -53,6 +56,10 @@ def shell(*, title, description, url, body):
         f'<meta property="og:url" content="{BASE}{url}">',
         '<meta property="og:type" content="website">',
         '<meta name="twitter:card" content="summary">',
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>',
+        "<script>window.dataLayer=window.dataLayer||[];"
+        "function gtag(){dataLayer.push(arguments);}"
+        f"gtag('js',new Date());gtag('config','{GA_ID}');</script>",
     ]
     return "".join(head) + "</head><body>" + body + "</body></html>"
 
