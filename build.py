@@ -65,7 +65,7 @@ def shell(*, title, description, url, body):
 
 
 def build():
-    themes = load_toml(ROOT / "themes.toml")["theme"]
+    themes = load_toml(ROOT / "themes.toml").get("theme", [])
     meta, raw = split_front_matter((ROOT / "index.md").read_text(encoding="utf-8"))
     intro = markdown.markdown(raw, extensions=["extra", "smarty"])
 

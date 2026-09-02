@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://themedocs.github.io/evermag/sitemap.xml
+Sitemap: https://themedocs.github.io/fox-templates/sitemap.xml
