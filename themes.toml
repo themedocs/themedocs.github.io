@@ -22,16 +22,6 @@ name    = "Blank"
 tagline = "A minimal WordPress blog and portfolio theme"
 
 [[theme]]
-slug    = "stoat"
-name    = "Stoat"
-tagline = "A free, fast WordPress landing-page theme"
-
-[[theme]]
-slug    = "rural-blog"
-name    = "Rural Blog"
-tagline = "A clean, fast blogging theme for WordPress"
-
-[[theme]]
 slug    = "evermag"
 name    = "Evermag"
 tagline = "A magazine theme for WordPress"
