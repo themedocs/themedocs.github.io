@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://themedocs.github.io/fox-templates/sitemap.xml

@@ -1,12 +1,8 @@
 # Each theme's docs live in their own repository, published at /<slug>/.
 # Order here is the order they appear on the home page.
 #
-# The theme docs that used to be listed here have moved to their own hosts —
-# docs.owldraft.com and docs.heronwp.com — and their repos here now serve
-# forwards. What is genuinely still published from this site is the Fox
-# template directory.
-
-[[theme]]
-slug    = "fox-templates"
-name    = "Fox templates"
-tagline = "Template directory for the Fox theme"
+# Nothing is listed any more: every docs repo here has moved to its own host —
+# docs.owldraft.com, docs.heronwp.com, and fox-templates.heronwp.com for the
+# Fox template directory — and the repos here now serve forwards to them. The
+# list only feeds the sitemap lines in robots.txt, and a forward has no
+# sitemap, so it stays empty.
