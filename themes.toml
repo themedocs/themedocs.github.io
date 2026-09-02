@@ -2,26 +2,6 @@
 # Order here is the order they appear on the home page.
 
 [[theme]]
-slug    = "fox"
-name    = "Fox"
-tagline = "Minimal WordPress blog & magazine theme"
-
-[[theme]]
-slug    = "dine"
-name    = "Dine"
-tagline = "WordPress theme for restaurants and cafés"
-
-[[theme]]
-slug    = "simple-elegant"
-name    = "Simple & Elegant"
-tagline = "A clean, elegant WordPress blog theme"
-
-[[theme]]
-slug    = "blank"
-name    = "Blank"
-tagline = "A minimal WordPress blog and portfolio theme"
-
-[[theme]]
 slug    = "evermag"
 name    = "Evermag"
 tagline = "A magazine theme for WordPress"

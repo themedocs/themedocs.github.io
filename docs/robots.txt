@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://themedocs.github.io/fox/sitemap.xml
-Sitemap: https://themedocs.github.io/dine/sitemap.xml
-Sitemap: https://themedocs.github.io/simple-elegant/sitemap.xml
-Sitemap: https://themedocs.github.io/blank/sitemap.xml
 Sitemap: https://themedocs.github.io/evermag/sitemap.xml
