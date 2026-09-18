@@ -99,9 +99,9 @@ def build():
     # The one 301 GitHub Pages will emit. With a custom domain set on this, the
     # user-site repo, every themedocs.github.io/<repo>/<path> 301s to
     # CNAME/<repo>/<path> -- project repos under this account included, which is
-    # why none of them carry a CNAME of their own. themedocs.heronwp.com is a
-    # Cloudflare Pages project holding only a _redirects file; it sorts each
-    # product onto its storefront. Source: company/cf/themedocs-hop/.
+    # why none of them carry a CNAME of their own. themedocs.heronwp.com is
+    # orange-clouded on Cloudflare and answered by a Single Redirect that sorts
+    # each product onto its storefront. Source: company/cf/themedocs-redirect.py.
     # build() empties docs/ first, so this file has to be rewritten every time.
     (BUILD / "CNAME").write_text(CNAME + "\n")
 

@@ -14,14 +14,23 @@ account too — `themedocs.github.io/fox/getting-started/` 301s to
 theme repos carry a CNAME of their own; a custom domain belongs to one Pages
 site at a time.
 
-`themedocs.heronwp.com` is a Cloudflare Pages project holding a single
-`_redirects` file, which 301s each product onto the storefront that sells it —
-fox / dine / simple-elegant / blank to `heronwp.com/docs/`, stoat / rural-blog
-/ evermag to `owldraft.com/docs/`, fox-templates to `fox-templates.heronwp.com`.
-Source lives in the company repo at `cf/themedocs-hop/`.
+GitHub writes that middle hop as `http://` — it only writes `https://` once it
+holds its own certificate for the custom domain, and it never will, because
+`themedocs.heronwp.com` is orange-clouded on Cloudflare and answered at the
+edge. That costs nothing: a Single Redirect runs before Always Use HTTPS, so
+the `http` request is answered in one shot rather than upgraded first.
 
-Two 301s, both keeping the path. `build.py` rewrites `docs/CNAME` on every run
-because it empties `docs/` first — do not delete it.
+Hop two is a Cloudflare Single Redirect on the heronwp.com zone, five rules,
+which sorts each product onto the storefront that sells it — fox / dine /
+simple-elegant / blank to `heronwp.com/docs/`, stoat / rural-blog / evermag to
+`owldraft.com/docs/`, fox-templates to `fox-templates.heronwp.com`, everything
+else to `heronwp.com/docs/`. Source lives in the company repo at
+`cf/themedocs-redirect.py`, and the DNS record points at `themedocs.github.io`
+that it may never reach.
+
+Two 301s, both keeping the path, every route ending on a 200. `build.py`
+rewrites `docs/CNAME` on every run because it empties `docs/` first — do not
+delete it.
 
 Historically every theme's docs lived in their own repository, published at
 `/<slug>/`. Those repos still exist and still build; nothing is served from
