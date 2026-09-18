@@ -21,6 +21,8 @@ BASE = "https://themedocs.github.io"
 # Google Analytics 4 — one property covers this page and every theme repo below
 # it, so the same id is set in each theme repo's site.toml.
 GA_ID = "G-YC7YN7JPV8"
+# The forwarding host. See the CNAME note in build().
+CNAME = "themedocs.heronwp.com"
 
 
 def load_toml(path):
@@ -93,6 +95,15 @@ def build():
         encoding="utf-8",
     )
     (BUILD / ".nojekyll").write_text("")
+
+    # The one 301 GitHub Pages will emit. With a custom domain set on this, the
+    # user-site repo, every themedocs.github.io/<repo>/<path> 301s to
+    # CNAME/<repo>/<path> -- project repos under this account included, which is
+    # why none of them carry a CNAME of their own. themedocs.heronwp.com is a
+    # Cloudflare Pages project holding only a _redirects file; it sorts each
+    # product onto its storefront. Source: company/cf/themedocs-hop/.
+    # build() empties docs/ first, so this file has to be rewritten every time.
+    (BUILD / "CNAME").write_text(CNAME + "\n")
 
     # Each theme repo publishes its own sitemap; this one lists where they are.
     (BUILD / "robots.txt").write_text(

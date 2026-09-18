@@ -1,10 +1,31 @@
 # Theme documentation home
 
-Source for <https://themedocs.github.io/> — the front door that points at each
-theme's documentation.
+Source for <https://themedocs.github.io/> — which no longer hosts anything. It
+is a 301 to the two storefronts that took the manuals over in September 2026.
 
-Every theme's docs live in their own repository and are published at
-`/<slug>/`, so this site is a single page plus a 404:
+## How the 301 works
+
+GitHub Pages cannot serve a 301 from a file; a `<meta http-equiv=refresh>` page
+is a 200, and a crawler keeps the old URL. The one 301 Pages does emit is the
+custom-domain redirect, so `docs/CNAME` here carries `themedocs.heronwp.com`.
+Because this is the *user*-site repo, that covers every project repo on the
+account too — `themedocs.github.io/fox/getting-started/` 301s to
+`themedocs.heronwp.com/fox/getting-started/`, whole path kept. None of the
+theme repos carry a CNAME of their own; a custom domain belongs to one Pages
+site at a time.
+
+`themedocs.heronwp.com` is a Cloudflare Pages project holding a single
+`_redirects` file, which 301s each product onto the storefront that sells it —
+fox / dine / simple-elegant / blank to `heronwp.com/docs/`, stoat / rural-blog
+/ evermag to `owldraft.com/docs/`, fox-templates to `fox-templates.heronwp.com`.
+Source lives in the company repo at `cf/themedocs-hop/`.
+
+Two 301s, both keeping the path. `build.py` rewrites `docs/CNAME` on every run
+because it empties `docs/` first — do not delete it.
+
+Historically every theme's docs lived in their own repository, published at
+`/<slug>/`. Those repos still exist and still build; nothing is served from
+them any more:
 
 | theme | repo | published at |
 | --- | --- | --- |
